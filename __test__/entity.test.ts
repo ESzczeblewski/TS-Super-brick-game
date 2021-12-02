@@ -4,15 +4,18 @@ import { IComponent } from '../src/utils';
 class E extends Entity { }
 
 class C1 implements IComponent {
-  public entity: E
+  public entity: E;
+  public update(deltaTime: number): void { };
 }
 
 class C2 implements IComponent {
-  public entity: E
+  public entity: E;
+  public update(deltaTime: number): void { };
 }
 
 class C3 implements IComponent {
-  public entity: E
+  public entity: E;
+  public update(deltaTime: number): void { };
 }
 
 describe('>>> Entity', () => {
@@ -46,10 +49,31 @@ describe('>>> Entity', () => {
 
     expect(e.HasComponent(C1)).toBeTruthy()
     expect(e.HasComponent(C3)).toBeTruthy()
-  })
+  });
 
   it('should throw error if component wasn\'t found', () => {
     expect(e.HasComponent(C1)).toBeFalsy()
     expect(() => e.GetComponent(C1)).toThrow()
+  });
+
+  it('should update all Components', () => {
+    const spy1 = jest.spyOn(c1, 'update');
+    const spy2 = jest.spyOn(c2, 'update');
+    const spy3 = jest.spyOn(c3, 'update');
+
+    expect(spy1).not.toBeCalled();
+    expect(spy2).not.toBeCalled();
+    expect(spy3).not.toBeCalled();
+
+    e.addComponent(c1);
+    e.addComponent(c2);
+    e.addComponent(c3);
+
+    const deltaTime = 10;
+    e.update(deltaTime);
+
+    expect(spy1).toBeCalledWith(deltaTime);
+    expect(spy2).toBeCalledWith(deltaTime);
+    expect(spy3).toBeCalledWith(deltaTime);
   })
 })

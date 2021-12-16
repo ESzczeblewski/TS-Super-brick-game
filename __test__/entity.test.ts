@@ -5,16 +5,19 @@ class E extends Entity { }
 
 class C1 implements IComponent {
   public entity: E;
+  public awake(): void { }
   public update(deltaTime: number): void { };
 }
 
 class C2 implements IComponent {
   public entity: E;
+  public awake(): void { }
   public update(deltaTime: number): void { };
 }
 
 class C3 implements IComponent {
   public entity: E;
+  public awake(): void { }
   public update(deltaTime: number): void { };
 }
 

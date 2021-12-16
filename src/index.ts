@@ -1,1 +1,3 @@
-console.log('elo');
+import { Game } from './game/game';
+
+new Game().awake();

@@ -1,6 +1,6 @@
 import { Entity } from './entity';
-import { IUpdate } from '../update.h';
+import { IUpdate, IAwake } from '..';
 
-export interface IComponent extends IUpdate {
+export interface IComponent extends IUpdate, IAwake {
   entity: Entity | null
 }

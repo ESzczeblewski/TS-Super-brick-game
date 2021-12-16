@@ -1,4 +1,4 @@
-import { Block } from '../..';
+import { Block } from '../../';
 import { CanvasLayer } from '../../../canvas-layer';
 import { settings } from '../../../settings';
 import { IComponent, Vector } from '../../../utils';

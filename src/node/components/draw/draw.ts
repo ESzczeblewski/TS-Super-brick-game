@@ -25,7 +25,9 @@ export class NodeDrawComponent implements IComponent {
   }
 
   private clear(): void {
-    CanvasLayer.background.clearRect(this.entity.start, this.entity.size)
+    CanvasLayer.background.clearRect(
+      // this.entity.start, this.entity.size
+    )
   }
 
 }

@@ -15,7 +15,7 @@ export class CanvasLayer {
     const canvas = new Canvas(new Vector(width, height))
 
     canvas.awake();
-    canvas.setStyle(style)
+    canvas.setStyle(style);
 
     return canvas;
   }
@@ -34,5 +34,9 @@ export class CanvasLayer {
     }
 
     return this._foreground;
+  }
+
+  public static get canvasSize(): Vector {
+    return { x: (settings.grid.nodeSize + settings.grid.nodeOffset) * settings.grid.rowNodes + settings.grid.nodeOffset, y: (settings.grid.nodeSize + settings.grid.nodeOffset) * settings.grid.columnNodes + settings.grid.nodeOffset }
   }
 }

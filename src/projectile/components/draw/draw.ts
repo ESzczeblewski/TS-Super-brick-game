@@ -1,11 +1,11 @@
-import { Block } from '../../';
+import { Projectile } from '../..';
 import { CanvasLayer } from '../../../canvas-layer';
 import { settings } from '../../../settings';
 import { IComponent, Vector } from '../../../utils';
 import { Color } from '../../../utils/color';
 
-export class BlockDrawComponent implements IComponent {
-  public entity: Block;
+export class ProjectileDrawComponent implements IComponent {
+  public entity: Projectile;
 
   private get position(): Vector {
     const position = this.entity.position;
@@ -27,12 +27,13 @@ export class BlockDrawComponent implements IComponent {
   }
 
   private draw(): void {
-    const color = new Color(148, 19, 19, 1);
+    const color = new Color(0, 0, 0, 1);
 
-    const size = new Vector(settings.grid.nodeSize, settings.grid.nodeSize)
+    const size = 10;
 
-    CanvasLayer.foreground.fillRect(this.position, size, color)
+    CanvasLayer.foreground.fillCircle(this.position, size, color)
   }
+
   private clear(): void {
     CanvasLayer.foreground.clearRect(
       // new Vector(

@@ -2,6 +2,7 @@ import { Entity } from '../utils';
 import { Block } from '../block';
 import { settings } from '../settings';
 import { Grid } from '../grid';
+import { CanvasLayer } from '../canvas-layer';
 
 export class Level extends Entity {
   private _blocks: Block[] = [];
@@ -22,6 +23,8 @@ export class Level extends Entity {
   public update(deltaTime: number) {
     super.update(deltaTime);
 
+    this.clear();
+
     this._blocks.map(block => block.update(deltaTime));
   }
 
@@ -34,5 +37,9 @@ export class Level extends Entity {
       this._blocks.push(block);
       block.awake();
     }
+  }
+
+  private clear(): void {
+    CanvasLayer.foreground.clearRect();
   }
 }
